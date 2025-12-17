@@ -1,0 +1,16 @@
+{
+    "tabWidth": 2,
+    "useTabs": false,
+    "printWidth": 180,
+    "singleQuote": false,
+    "quoteProps": "as-needed",
+    "semi": true,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "importOrder": [],
+    "importOrderSeparation": false,
+    "importOrderSortSpecifiers": false
+}
+

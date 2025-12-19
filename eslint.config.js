@@ -31,6 +31,12 @@ module.exports = defineConfig([
           style: "kebab-case"
         }
       ],
+      "@angular-eslint/component-class-suffix": [
+        "error",
+        {
+          suffixes: ["Component", "Page", "Directive"]
+        }
+      ],
       "prettier/prettier": [
         "error",
         {

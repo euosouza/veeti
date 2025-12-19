@@ -59,13 +59,13 @@ Cada módulo representa um **domínio de negócio independente**.
 
 ```
 apps/domain/nome-modulo
-    ├── apis
+    ├── apis (Chamadas HTTP)
     ├── components
     ├── constants
     ├── enums
     ├── interfaces
     ├── pages
-    └── services
+    └── services (Regra de negócio)
 ```
 
 ---

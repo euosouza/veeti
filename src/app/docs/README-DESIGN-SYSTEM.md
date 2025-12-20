@@ -15,14 +15,12 @@ Criar um Design System reutilizável, acessível, consistente e desacoplado da r
 ## 🧱 Fundamentos (Core)
 
 - [x] Theme Provider (Light / Dark)
-- [ ] Design Tokens
-  - [ ] Cores
-  - [ ] Tipografia
-  - [ ] Espaçamentos
-  - [ ] Border Radius
-  - [ ] Shadows
-- [ ] CSS Reset / Base Styles
-- [ ] Utilitários de layout (flex, grid, gap)
+- [x] Design Tokens
+  - [x] Cores
+  - [x] Tipografia
+  - [x] Espaçamentos
+  - [x] Border Radius
+  - [x] Shadows
 - [ ] Sistema de Ícones (wrapper para Lucide / Material Icons)
 
 ---
@@ -153,31 +151,12 @@ Criar um Design System reutilizável, acessível, consistente e desacoplado da r
 
 ## 🧪 Qualidade
 
-- [ ] Storybook configurado
-- [ ] Stories para todos os componentes
 - [ ] Testes unitários
 - [ ] Testes de acessibilidade
 - [ ] Documentação por componente
 
 ---
 
-## 📚 Documentação
-
-- [ ] Guia de instalação
-- [ ] Guia de temas
-- [ ] Guia de customização
-- [ ] Exemplos de uso
-- [ ] Boas práticas
-- [ ] Convenções do Design System
-
----
-
-## 🔗 Referências
-
-- ZardUI: https://zardui.com/docs/components
-- shadcn/ui: https://ui.shadcn.com/docs/components
-
----
 
 ## 🚀 Observações
 

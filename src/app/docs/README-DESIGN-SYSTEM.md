@@ -1,8 +1,8 @@
 # 🎨 Design System – TODO
 
-Este documento lista todos os componentes que devem ser criados no **Design System Angular**, tomando como referência os componentes do **ZardUI** e **shadcn/ui**.
+Este documento lista todos os componentes que devem ser criados no **Design System Angular**.
 
-📌 **Objetivo**  
+📌 **Objetivo**
 Criar um Design System reutilizável, acessível, consistente e desacoplado da regra de negócio, baseado em:
 
 - Angular (Standalone Components)
@@ -14,7 +14,7 @@ Criar um Design System reutilizável, acessível, consistente e desacoplado da r
 
 ## 🧱 Fundamentos (Core)
 
-- [ ] Theme Provider (Light / Dark)
+- [x] Theme Provider (Light / Dark)
 - [ ] Design Tokens
   - [ ] Cores
   - [ ] Tipografia

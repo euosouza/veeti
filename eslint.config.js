@@ -42,7 +42,6 @@ module.exports = defineConfig([
         {
           printWidth: 180,
           tabWidth: 2,
-          useTabs: false,
           semi: true,
           singleQuote: false,
           quoteProps: "as-needed",
@@ -62,6 +61,19 @@ module.exports = defineConfig([
       indent: ["error", 2, { SwitchCase: 1 }],
       "no-trailing-spaces": "error",
       "no-multiple-empty-lines": ["error", { max: 2, maxEOF: 1 }]
+    }
+  },
+  {
+    files: ["src/app/libs/**/*.ts"],
+    rules: {
+      "@angular-eslint/component-selector": [
+        "error",
+        {
+          type: "element",
+          prefix: "v",
+          style: "kebab-case"
+        }
+      ]
     }
   },
   {

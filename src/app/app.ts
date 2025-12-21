@@ -5,7 +5,12 @@ import { ThemeService } from "./core/services/theme/theme.service";
 @Component({
   selector: "app-root",
   imports: [RouterOutlet],
-  template: "<router-outlet />"
+  template: `
+    <div class="bg-background text-foreground w-full min-h-screen flex flex-col items-center justify-center text-base">
+      <h1>Bem-vindo ao Veeti!</h1>
+      <router-outlet />
+    </div>
+  `
 })
 export class AppRoot {
   private readonly themeService = inject(ThemeService);

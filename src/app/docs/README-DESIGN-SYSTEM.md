@@ -69,10 +69,10 @@ Criar um Design System reutilizável, acessível, consistente e desacoplado da r
 ## 📦 Layout & Estrutura
 
 - [ ] Container
-- [ ] Card
-  - [ ] Card Header
-  - [ ] Card Content
-  - [ ] Card Footer
+- [x] Card
+  - [x] Card Header
+  - [x] Card Content
+  - [x] Card Footer
 - [ ] Separator / Divider
 - [ ] Aspect Ratio
 - [ ] Scroll Area
@@ -112,7 +112,7 @@ Criar um Design System reutilizável, acessível, consistente e desacoplado da r
 - [ ] Badge
 - [ ] Avatar
 - [ ] Progress Bar
-- [ ] Skeleton
+- [x] Skeleton
 - [ ] Charts (wrapper para lib externa)
 
 ---
@@ -166,9 +166,9 @@ Criar um Design System reutilizável, acessível, consistente e desacoplado da r
   - Controlados via `@Input()` e `@Output()`
 - Evitar dependência direta de regras de negócio
 - Padrão de nomenclatura:
-  - `DsButtonComponent`
-  - `DsInputComponent`
-  - `DsCardComponent`
+  - `VButtonComponent`
+  - `VInputComponent`
+  - `VCardComponent`
 
 ---
 

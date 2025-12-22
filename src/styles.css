@@ -4,7 +4,51 @@
 
 /* Light (default) */
 :root {
-  --color-primary-50: #fffce7;
+  --background: var(--color-neutral-50);
+  --foreground: var(--color-neutral-950);
+
+  /* Card styles */
+  --card-color-background: var(--color-white);
+  --card-color-border: var(--color-neutral-100);
+
+    /* Skeleton styles */
+  --skeleton-from: var(--color-neutral-100);
+  --skeleton-via: var(--color-neutral-200);
+  --skeleton-to: var(--color-neutral-100);
+}
+
+/* Dark */
+[data-theme="dark"] {
+  --background: var(--color-neutral-950);
+  --foreground: var(--color-neutral-50);
+
+  /* Card styles */
+  --card-color-background: var(--color-neutral-900);
+  --card-color-border: var(--color-neutral-800);
+
+  /* Skeleton styles */
+  --skeleton-from: var(--color-neutral-900);
+  --skeleton-via: var(--color-neutral-800);
+  --skeleton-to: var(--color-neutral-900);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+    /* Card styles */
+  --color-card-background: var(--card-color-background);
+  --color-card-border: var(--card-color-border);
+
+    /* Text styles */
+  --text-base: 14px;
+
+  /* Skeleton styles */
+  --color-skeleton-from: var(--skeleton-from);
+  --color-skeleton-via: var(--skeleton-via);
+  --color-skeleton-to: var(--skeleton-to);
+
+    --color-primary-50: #fffce7;
   --color-primary-100: #fffbc1;
   --color-primary-200: #fff487;
   --color-primary-300: #ffe642;
@@ -91,51 +135,6 @@
 
   --color-white: #FFFFFF;
   --color-black: #000000;
-
-  --background: var(--color-neutral-50);
-  --foreground: var(--color-neutral-950);
-
-  /* Card styles */
-  --card-color-background: var(--color-white);
-  --card-color-border: var(--color-neutral-100);
-
-    /* Skeleton styles */
-  --skeleton-from: var(--color-neutral-100);
-  --skeleton-via: var(--color-neutral-200);
-  --skeleton-to: var(--color-neutral-100);
-}
-
-/* Dark */
-[data-theme="dark"] {
-  --background: var(--color-neutral-950);
-  --foreground: var(--color-neutral-50);
-
-  /* Card styles */
-  --card-color-background: var(--color-neutral-900);
-  --card-color-border: var(--color-neutral-800);
-
-  /* Skeleton styles */
-  --skeleton-from: var(--color-neutral-900);
-  --skeleton-via: var(--color-neutral-800);
-  --skeleton-to: var(--color-neutral-900);
-}
-
-@theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-    /* Card styles */
-  --color-card-background: var(--card-color-background);
-  --color-card-border: var(--card-color-border);
-
-    /* Text styles */
-  --text-base: 14px;
-
-  /* Skeleton styles */
-  --color-skeleton-from: var(--skeleton-from);
-  --color-skeleton-via: var(--skeleton-via);
-  --color-skeleton-to: var(--skeleton-to);
-
 }
 
 /* Animação shimmer */

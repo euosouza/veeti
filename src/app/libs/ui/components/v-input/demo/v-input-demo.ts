@@ -3,17 +3,17 @@ import { Component, computed, signal } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 
 import { InputSize, VInput } from "@libs/ui/components/v-input/v-input";
+import { PlaygroundComponent } from "@core/components/layouts/playground/playground.layout";
 
 @Component({
   selector: "v-input-demo",
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, VInput, JsonPipe, CommonModule],
+  imports: [ReactiveFormsModule, FormsModule, VInput, JsonPipe, CommonModule, PlaygroundComponent],
   templateUrl: "./v-input-demo.html"
 })
 export class VInputDemoComponent {
   readonly placeholder = signal("Digite algo...");
   size = signal<InputSize>("md");
-  label = signal("Label");
   readonly isTextarea = signal(false);
   readonly isDisabled = signal(false);
   readonly isInvalid = signal(false);
@@ -56,7 +56,6 @@ export class VInputDemoComponent {
   resetPlayground() {
     this.placeholder.set("");
     this.size.set("md");
-    this.label.set("");
     this.isTextarea.set(false);
     this.isDisabled.set(false);
     this.isInvalid.set(false);

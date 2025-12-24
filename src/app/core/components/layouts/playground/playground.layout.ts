@@ -13,7 +13,7 @@ export interface PlaygroundConfig {
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./playground.layout.html"
 })
-export class PlaygroundComponent {
+export class PlaygroundLayout {
   readonly config = input.required<PlaygroundConfig>();
   readonly codeSnippet = input.required<string>();
 

@@ -1,4 +1,4 @@
-<app-playground [config]="{ title: '', description: ''}" [codeSnippet]="codeSnippet()">
+<app-playground [config]="config" [codeSnippet]="codeSnippet()">
   <ng-content preview>
     @if (!isTextarea()) {
     <input v-input [formControl]="controlPlayground" [placeholder]="placeholder()" id="input" [size]="size()" />

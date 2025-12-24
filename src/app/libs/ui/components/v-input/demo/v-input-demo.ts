@@ -2,16 +2,22 @@ import { CommonModule, JsonPipe } from "@angular/common";
 import { Component, computed, signal } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 
+import { PlaygroundLayout } from "@core/components/layouts/playground/playground.layout";
 import { InputSize, VInput } from "@libs/ui/components/v-input/v-input";
-import { PlaygroundComponent } from "@core/components/layouts/playground/playground.layout";
 
 @Component({
   selector: "v-input-demo",
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, VInput, JsonPipe, CommonModule, PlaygroundComponent],
+  imports: [ReactiveFormsModule, FormsModule, VInput, JsonPipe, CommonModule, PlaygroundLayout],
   templateUrl: "./v-input-demo.html"
 })
 export class VInputDemoComponent {
+  config = {
+    title: "Input",
+    description:
+      "Exibe um campo de input ou textarea para uso em formulários, incluindo validação, diferentes tamanhos e integração perfeita com formulários reativos e template-driven."
+  };
+
   readonly placeholder = signal("Digite algo...");
   size = signal<InputSize>("md");
   readonly isTextarea = signal(false);

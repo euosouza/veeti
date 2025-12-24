@@ -34,7 +34,7 @@ module.exports = defineConfig([
       "@angular-eslint/component-class-suffix": [
         "error",
         {
-          suffixes: ["Component", "Page", "Directive", "Root"]
+          suffixes: ["Component", "Page", "Directive", "Root", "Layout"]
         }
       ],
       "prettier/prettier": [

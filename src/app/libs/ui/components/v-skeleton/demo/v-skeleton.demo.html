@@ -1,0 +1,37 @@
+<app-playground [config]="config" [codeSnippet]="codeSnippet()">
+  <div preview>
+    <v-skeleton [height]="height()" [count]="count()" [shape]="shape()"></v-skeleton>
+  </div>
+
+  <div exemplo>
+    <div class="flex items-center space-x-4 rounded-md border border-border p-4">
+      <v-skeleton shape="circle" height="48px" width="48px" [count]="1"></v-skeleton>
+      <div class="flex-1 space-y-2">
+        <v-skeleton height="16px" width="75%" [count]="2"></v-skeleton>
+      </div>
+    </div>
+  </div>
+
+  <div controle-componente>
+    <div class="space-y-4">
+      <div>
+        <label class="text-sm font-medium" for="count-height">Altura (height)</label>
+        <input v-input type="text" [(ngModel)]="heightInput" (ngModelChange)="height.set($event)"
+          class="mt-1 w-full rounded-md border-gray-300 shadow-sm sm:text-sm bg-card-background text-foreground" />
+      </div>
+      <div>
+        <label class="text-sm font-medium" for="count-input">Contagem (count)</label>
+        <input v-input type="number" [(ngModel)]="countInput" (ngModelChange)="count.set($event)"
+          class="mt-1 w-full rounded-md border-gray-300 shadow-sm sm:text-sm bg-card-background text-foreground" />
+      </div>
+      <div>
+        <label class="text-sm font-medium" for="count-shape">Formato (shape)</label>
+        <select [(ngModel)]="shapeInput" (ngModelChange)="shape.set($event)"
+          class="w-full border border-border-dark rounded p-2 text-sm text-foreground appearance-none focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-card-background">
+          <option value="square">Quadrado</option>
+          <option value="circle">Círculo</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</app-playground>

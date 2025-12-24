@@ -9,7 +9,10 @@
 
   /* Card styles */
   --card-color-background: var(--color-white);
-  --card-color-border: var(--color-neutral-100);
+  --card-color-border: var(--color-neutral-200);
+
+  /* Scroll styles */
+  --scroll-background: var(--color-neutral-200);
 
     /* Skeleton styles */
   --skeleton-from: var(--color-neutral-100);
@@ -25,6 +28,9 @@
   /* Card styles */
   --card-color-background: var(--color-neutral-900);
   --card-color-border: var(--color-neutral-800);
+
+  /* Scroll styles */
+  --scroll-background: var(--color-neutral-800);
 
   /* Skeleton styles */
   --skeleton-from: var(--color-neutral-900);
@@ -152,3 +158,31 @@
   animation: skeleton 1.5s ease-in-out infinite;
 }
 
+
+@layer utilities {
+  /* Classe personalizada para a Veeti */
+  .scrollbar-veeti {
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-background) transparent;
+  }
+
+  /* Chrome, Edge, Safari */
+  .scrollbar-veeti::-webkit-scrollbar {
+    width: 6px; /* Fina para ser discreta */
+    height: 6px; /* Para scroll horizontal */
+  }
+
+  .scrollbar-veeti::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-veeti::-webkit-scrollbar-thumb {
+    background: var(--scroll-background);
+    border-radius: 100%;
+  }
+
+  .scrollbar-veeti::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-background);
+  }
+}

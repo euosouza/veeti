@@ -6,8 +6,8 @@ import { ThemeService } from "./core/services/theme/theme.service";
   selector: "app-root",
   imports: [RouterOutlet, RouterLink],
   template: `
-    <div class="bg-background text-foreground min-h-svh w-full">
-      <header class="p-4 border-b border-border">
+    <div class="flex h-screen w-full flex-col bg-background text-foreground scrollbar-veeti antialiased">
+      <header class="p-4 border-b border-card-border">
         <div class="container mx-auto flex justify-between items-center">
           <h1 class="text-xl font-bold">Playground Veeti</h1>
           <nav class="flex items-center gap-4">
@@ -17,8 +17,8 @@ import { ThemeService } from "./core/services/theme/theme.service";
           </nav>
         </div>
       </header>
-      <div class="container mx-auto flex flex-row">
-        <aside class="w-64 p-4 border-r border-border">
+      <div class="container mx-auto flex flex-1 flex-row overflow-hidden">
+        <aside class="w-40 overflow-y-auto border-r border-card-border p-4">
           <h2 class="font-bold mb-2 text-lg">Componentes</h2>
           <nav class="flex flex-col gap-2">
             <a routerLink="/v-input-demo" routerLinkActive="text-primary font-semibold" class="text-sm hover:underline">Input</a>
@@ -28,7 +28,7 @@ import { ThemeService } from "./core/services/theme/theme.service";
           </nav>
         </aside>
 
-        <main class="flex-1 p-4">
+        <main class="flex-1 overflow-y-auto">
           <router-outlet />
         </main>
       </div>

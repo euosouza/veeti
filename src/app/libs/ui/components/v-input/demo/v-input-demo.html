@@ -1,180 +1,110 @@
-<div class="flex items-stretch">
-  <main class="flex-1 p-8">
-    <div class="mb-6">
-      <!-- Header Title-->
-      <h2 class="text-3xl font-bold text-foreground mb-2">Nome do componente</h2>
-      <p class="text-md text-slate-400 leading-relaxed max-w-2xl">Descrição do que é o component</p>
+<app-playground [config]="{ title: '', description: ''}" [codeSnippet]="codeSnippet()">
+  <ng-content preview>
+    @if (!isTextarea()) {
+    <input v-input [formControl]="controlPlayground" [placeholder]="placeholder()" id="input" [size]="size()" />
+    }
+    @else {
+    <textarea v-input [formControl]="controlPlayground" [placeholder]="placeholder()"></textarea>
+    }
+  </ng-content>
 
-      <!-- Tabs -->
-      <div class="border-b border-card-border mt-8">
-        <nav class="flex gap-8">
-          <button class="pb-3 border-b-2 border-primary text-primary font-medium text-sm">Preview</button>
-          <button disabled
-            class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-foreground font-medium text-sm transition-colors disabled:opacity-30">Documentação</button>
-          <button disabled
-            class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-foreground font-medium text-sm transition-colors disabled:opacity-30">Acessibilidade</button>
-        </nav>
-      </div>
-    </div>
+  <ng-content exemplo>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="space-y-4">
+        <div class="p-6 bg-surface-dark border border-border-dark rounded-lg">
+          <p class="font-semibold text-foreground mb-4">Formulário de Login</p>
 
-    <!-- Component Playground -->
-    <div>
-      <p class="text-lg font-semibold text-foreground mb-4">Playground interativo</p>
-
-      <!-- Canvas -->
-      <div class="border border-card-border rounded-xl overflow-hidden shadow-md bg-blue-600">
-        <!-- Grid lines overlay (optional aesthetic) -->
-        <div class="checkerboard h-[320px] w-full flex items-center justify-center relative" [style]="checkerboard">
-          <div class="absolute inset-0 pointer-events-none" [style]="stylesCanvas"></div>
-
-          <!-- The Component -->
-          <div class="w-full max-w-sm space-y-2 z-10">
-            @if (label()) {
-            <label class="block text-sm font-medium text-foreground" for="input">{{ label() }}</label>
-            }
-            @if (label()) {
-            <input v-input [formControl]="controlPlayground" [placeholder]="placeholder()" id="input" [size]="size()" />
-            }
-            @else {
-            <textarea v-input [formControl]="controlPlayground" [placeholder]="placeholder()"></textarea>
-            }
-          </div>
-        </div>
-
-        <!-- Code Snippet -->
-        <div class="bg-card-background border-t border-border-dark">
-          <div class="flex items-center justify-end px-4 py-2 border-b border-card-border">
-            <button class="text-foreground flex items-center gap-1.5 text-xs font-medium" (click)="onClickCopy()">
-              Copy
-            </button>
-          </div>
-          <div class="p-4 overflow-x-auto">
-            <pre class="font-mono text-sm leading-relaxed text-foreground"><code>{{ codeSnippet() }}</code></pre>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="space-y-6 pt-6">
-        <p class="text-lg font-semibold text-foreground mb-4">Exemplo:</p>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div class="space-y-4">
-            <div class="p-6 bg-surface-dark border border-border-dark rounded-lg">
-              <p class="font-semibold text-foreground mb-4">Formulário de Login</p>
-
-              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="grid gap-4">
-                <div>
-                  <label for="name" class="block text-sm font-medium text-foreground mb-2">Name</label>
-                  <input v-input id="name" type="text" placeholder="Your Name" formControlName="name" />
-                </div>
-                <div>
-                  <label for="email" class="block text-sm font-medium text-foreground mb-2">Email (Required)</label>
-                  <input v-input id="email" type="email" placeholder="seu@email.com" formControlName="email" />
-                </div>
-                <button type="submit" [disabled]="loginForm.invalid"
-                  class="bg-secondary-500 hover:bg-secondary-600 text-foreground font-medium px-4 py-2 rounded-md transition-colors w-fit disabled:opacity-50 disabled:cursor-not-allowed">
-                  Submit
-                </button>
-              </form>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="grid gap-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-foreground mb-2">Name</label>
+              <input v-input id="name" type="text" placeholder="Your Name" formControlName="name" />
             </div>
-          </div>
-          <div class="space-y-4">
-            <div class="p-4 text-xs bg-[#0d1117] border border-border-dark rounded-lg font-mono text-slate-400 h-full">
-              <h4 class="font-bold text-slate-200 mb-2">Form State</h4>
-              <p><span class="text-purple-400">Status:</span> {{ loginForm.status }}</p>
-              <p><span class="text-purple-400">Touched:</span> {{ loginForm.touched }}</p>
-              <p><span class="text-purple-400">Dirty:</span> {{ loginForm.dirty }}</p>
-              <p><span class="text-purple-400">Valid:</span> {{ loginForm.valid }}</p>
-              <p class="mt-2 text-slate-200">Value:</p>
-              <pre class="whitespace-pre-wrap text-green-400">{{ loginForm.value | json }}</pre>
+            <div>
+              <label for="email" class="block text-sm font-medium text-foreground mb-2">Email (Required)</label>
+              <input v-input id="email" type="email" placeholder="seu@email.com" formControlName="email" />
             </div>
-          </div>
+            <button type="submit" [disabled]="loginForm.invalid"
+              class="bg-secondary-500 hover:bg-secondary-600 text-foreground font-medium px-4 py-2 rounded-md transition-colors w-fit disabled:opacity-50 disabled:cursor-not-allowed">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="p-4 text-xs bg-[#0d1117] border border-border-dark rounded-lg font-mono text-slate-400 h-full">
+          <h4 class="font-bold text-slate-200 mb-2">Form State</h4>
+          <p><span class="text-purple-400">Status:</span> {{ loginForm.status }}</p>
+          <p><span class="text-purple-400">Touched:</span> {{ loginForm.touched }}</p>
+          <p><span class="text-purple-400">Dirty:</span> {{ loginForm.dirty }}</p>
+          <p><span class="text-purple-400">Valid:</span> {{ loginForm.valid }}</p>
+          <p class="mt-2 text-slate-200">Value:</p>
+          <pre class="whitespace-pre-wrap text-green-400">{{ loginForm.value | json }}</pre>
         </div>
       </div>
     </div>
-  </main>
+  </ng-content>
 
-  <aside class="w-90 border-l border-card-border">
-    <!-- Tabs -->
-    <div class="border-b border-card-border mb-4">
-      <nav class="flex justify-center">
-        <button class="flex-1 h-12 py-3 border-b-2 border-primary text-primary font-medium text-sm">Preview</button>
-        <button disabled
-          class="flex-1 h-12 py-3 border-b-2 border-transparent text-slate-400 hover:text-foreground font-medium text-sm transition-colors disabled:opacity-30">Documentação</button>
-      </nav>
+  <ng-content controle-componente>
+    <div class="flex items-center justify-between">
+      <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Aparencia</h3>
+      <button class="text-primary text-xs hover:underline" (click)="resetPlayground()">Reset</button>
     </div>
 
-    <!-- Properties Panel -->
-    <div class="flex-1 overflow-y-auto p-5 space-y-8">
-      <div class="space-y-5">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Aparencia</h3>
-          <button class="text-primary text-xs hover:underline" (click)="resetPlayground()">Reset</button>
-        </div>
+    <div class="space-y-2">
+      <label class="block text-sm font-medium text-foreground" for="placeholder-props">Placeholder:</label>
+      <input v-input type="text" [ngModel]="placeholder()" (ngModelChange)="placeholder.set($event)"
+        id="placeholder-props" />
+    </div>
 
-        <div class="space-y-2">
-          <label class="block text-sm font-medium text-foreground" for="label-props">Label:</label>
-          <input v-input type="text" [ngModel]="label()" (ngModelChange)="label.set($event)" id="label-props" />
-        </div>
-
-        <div class="space-y-2">
-          <label class="block text-sm font-medium text-foreground" for="placeholder-props">Placeholder:</label>
-          <input v-input type="text" [ngModel]="placeholder()" (ngModelChange)="placeholder.set($event)"
-            id="placeholder-props" />
-        </div>
-
-        <!-- Control: Select -->
-        <div class="space-y-2">
-          <label class="block text-sm font-medium text-foreground" for="variant-props">Variant</label>
-          <div class="relative">
-            <select id="variant-props"
-              class="w-full border border-border-dark rounded p-2 text-sm text-foreground appearance-none focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-card-background"
-              [ngModel]="isTextarea() ? 'textarea' : 'input'" (ngModelChange)="isTextarea.set($event === 'textarea')">
-              <option value="input">Input</option>
-              <option value="textarea">Textarea</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Control: Radio Group -->
-        <div class="space-y-2">
-          <label class="block text-sm font-medium text-foreground" for="placeholder-props">Size</label>
-          <div class="flex bg-surface-dark rounded p-1 border border-border-dark">
-            <button class="flex-1 py-1 text-xs font-medium rounded transition-colors cursor-pointer"
-              [class.text-foreground]="size() === 'sm'" [class.bg-border-dark]="size() === 'sm'"
-              [class.text-slate-400]="size() !== 'sm'" (click)="size.set('sm')">
-              SM
-            </button>
-            <button class="flex-1 py-1 text-xs font-medium rounded transition-colors cursor-pointer"
-              [class.text-foreground]="size() === 'md'" [class.bg-border-dark]="size() === 'md'"
-              [class.text-slate-400]="size() !== 'md'" (click)="size.set('md')">
-              MD
-            </button>
-            <button class="flex-1 py-1 text-xs font-medium rounded transition-colors cursor-pointer"
-              [class.text-foreground]="size() === 'lg'" [class.bg-border-dark]="size() === 'lg'"
-              [class.text-slate-400]="size() !== 'lg'" (click)="size.set('lg')">
-              LG
-            </button>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <h3 class="text-xs font-bold text-foreground uppercase tracking-wider">Estado</h3>
-        </div>
-
-        <!-- Control: Toggles -->
-        <div class="space-y-3">
-          <label class="flex items-center gap-2 cursor-pointer group">
-            <input type="checkbox" [ngModel]="isDisabled()" (ngModelChange)="toggleDisabled($event)" />
-            <span class="text-sm text-foreground transition-colors">Disabled</span>
-          </label>
-          <label class="flex items-center gap-2 cursor-pointer group">
-            <input type="checkbox" [ngModel]="isInvalid()" (ngModelChange)="toggleInvalid($event)" />
-            <span class="text-sm text-foreground  transition-colors">Invalid</span>
-          </label>
-        </div>
+    <!-- Control: Select -->
+    <div class="space-y-2">
+      <label class="block text-sm font-medium text-foreground" for="variant-props">Variant</label>
+      <div class="relative">
+        <select id="variant-props"
+          class="w-full border border-border-dark rounded p-2 text-sm text-foreground appearance-none focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-card-background"
+          [ngModel]="isTextarea() ? 'textarea' : 'input'" (ngModelChange)="isTextarea.set($event === 'textarea')">
+          <option value="input">Input</option>
+          <option value="textarea">Textarea</option>
+        </select>
       </div>
     </div>
-  </aside>
-</div>
+
+    <!-- Control: Radio Group -->
+    <div class="space-y-2">
+      <label class="block text-sm font-medium text-foreground" for="placeholder-props">Size</label>
+      <div class="flex bg-surface-dark rounded p-1 border border-border-dark">
+        <button class="flex-1 py-1 text-xs font-medium rounded transition-colors cursor-pointer"
+          [class.text-foreground]="size() === 'sm'" [class.bg-border-dark]="size() === 'sm'"
+          [class.text-slate-400]="size() !== 'sm'" (click)="size.set('sm')">
+          SM
+        </button>
+        <button class="flex-1 py-1 text-xs font-medium rounded transition-colors cursor-pointer"
+          [class.text-foreground]="size() === 'md'" [class.bg-border-dark]="size() === 'md'"
+          [class.text-slate-400]="size() !== 'md'" (click)="size.set('md')">
+          MD
+        </button>
+        <button class="flex-1 py-1 text-xs font-medium rounded transition-colors cursor-pointer"
+          [class.text-foreground]="size() === 'lg'" [class.bg-border-dark]="size() === 'lg'"
+          [class.text-slate-400]="size() !== 'lg'" (click)="size.set('lg')">
+          LG
+        </button>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <h3 class="text-xs font-bold text-foreground uppercase tracking-wider">Estado</h3>
+    </div>
+
+    <!-- Control: Toggles -->
+    <div class="space-y-3">
+      <label class="flex items-center gap-2 cursor-pointer group">
+        <input type="checkbox" [ngModel]="isDisabled()" (ngModelChange)="toggleDisabled($event)" />
+        <span class="text-sm text-foreground transition-colors">Disabled</span>
+      </label>
+      <label class="flex items-center gap-2 cursor-pointer group">
+        <input type="checkbox" [ngModel]="isInvalid()" (ngModelChange)="toggleInvalid($event)" />
+        <span class="text-sm text-foreground  transition-colors">Invalid</span>
+      </label>
+    </div>
+  </ng-content>
+</app-playground>

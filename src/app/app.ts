@@ -12,7 +12,7 @@ import { ThemeService } from "./core/services/theme/theme.service";
           <h1 class="text-xl font-bold">Playground Veeti</h1>
           <nav class="flex items-center gap-4">
             <a routerLink="/v-input-demo" class="text-sm hover:underline">V-Input</a>
-            <button (click)="toggleTheme()" class="bg-secondary-500 hover:bg-secondary-600 text-white font-medium px-4 py-2 rounded-md hover:bg-primary/80 transition-colors">
+            <button (click)="toggleTheme()" class="bg-secondary-500 hover:bg-secondary-600 text-black font-medium px-4 py-2 rounded-md hover:bg-primary/80 transition-colors">
               Toggle Theme
             </button>
           </nav>

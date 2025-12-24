@@ -2,6 +2,19 @@
 
 Este documento lista todos os componentes que devem ser criados no **Design System Angular**.
 
+---
+
+## ⭐ Padrão de Desenvolvimento
+
+**Atenção:** Todos os componentes listados abaixo **devem** seguir o novo padrão de desenvolvimento:
+1.  **Demo Local:** Cada componente precisa ter uma página de demonstração isolada (`/demo`).
+2.  **Variantes e Tamanhos:** Devem ser implementados `inputs` para `variant` e `size`.
+3.  **Casos de Uso:** A página de demo deve exibir todos os casos de uso, incluindo variantes, tamanhos e estados.
+
+Consulte o `README.COMPONENTES.md` para detalhes da implementação.
+
+---
+
 📌 **Objetivo**
 Criar um Design System reutilizável, acessível, consistente e desacoplado da regra de negócio, baseado em:
 

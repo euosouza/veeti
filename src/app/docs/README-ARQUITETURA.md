@@ -85,13 +85,17 @@ apps/widget
 
 ## 🎨 Bibliotecas de UI (`apps/libs/ui`)
 
-Design System da aplicação.
+Design System da aplicação. Cada componente é auto-contido e inclui sua própria documentação e demo.
 
 ```
 apps/libs/ui
  └── components
-      ├── label
-      └── outros-componentes
+      └── v-nome-componente/
+          ├── demo/
+          |   └── v-nome-componente-demo.ts (Componente de demonstração)
+          ├── v-nome-componente.ts        (Código fonte)
+          ├── v-nome-componente.spec.ts   (Testes)
+          └── README.md                   (Documentação)
 ```
 
 ---

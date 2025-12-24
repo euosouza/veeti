@@ -76,6 +76,94 @@ These are presentational components.
   - **NO** direct access to global state.
 - **State:** Must be stateless where possible. Any internal state must be simple UI state (e.g., `isDropdownOpen`).
 
+### Design System Component Conventions (`libs/ui`)
+
+In addition to the "Dumb Component" rules, all components in `apps/libs/ui` **MUST** implement a standardized pattern for handling CSS classes to ensure they are extensible.
+
+- **Required Imports:**
+  ```typescript
+  import { computed, input } from '@angular/core';
+  import { ClassValue, mergeClasses } from '@libs/ui/utils/merge-class';
+  ```
+- **Mandatory Implementation:** Each component must accept an optional `class` input and compute the final class list.
+  ```typescript
+  // Inside your component class
+  readonly class = input<ClassValue>("");
+  
+  protected readonly classes = computed(() =>
+    mergeClasses(
+      // List of default, base, and variant classes for the component
+      "font-bold text-lg ...", 
+      this.class() // This MUST be the last argument
+    )
+  );
+  ```
+- **Host Binding:** The computed `classes` signal must be bound to the host element.
+  ```typescript
+  @Component({
+    ...
+    host: {
+      '[class]': 'classes()'
+    }
+  })
+  ```
+
+### Design System Component Development Workflow (`libs/ui`)
+
+When creating or modifying a `libs/ui` component, the following workflow is **mandatory**:
+
+1.  **Component Features**:
+    *   **Variants & Sizes with `cva`**: The component **MUST** use `class-variance-authority` to manage all style variants like `variant` and `size`. This is the standard for creating declarative and type-safe component styles.
+        ```typescript
+        import { cva } from "class-variance-authority";
+
+        const myComponentVariants = cva(
+          "base-classes...", // Base classes applied to all variants
+          {
+            variants: {
+              variant: {
+                primary: "variant-primary-classes...",
+                secondary: "variant-secondary-classes...",
+              },
+              size: {
+                sm: "size-sm-classes...",
+                md: "size-md-classes...",
+              },
+            },
+            defaultVariants: {
+              variant: "primary",
+              size: "md",
+            },
+          }
+        );
+        ```
+    *   **Extensible Styling**: The component **MUST** accept an external `class` input and merge it using `mergeClasses`.
+
+2.  **Class Computation**: The `classes` computed signal **MUST** use the `cva` variant function and `mergeClasses`.
+    ```typescript
+    protected readonly classes = computed(() =>
+      mergeClasses(
+        myComponentVariants({ variant: this.variant(), size: this.size() }),
+        // ... other conditional classes like for invalid state ...
+        this.class()
+      )
+    );
+    ```
+
+3.  **Local Demo Component**:
+    *   For each component `v-thing`, you **MUST** create a corresponding demo component `v-thing-demo` inside a `demo` sub-folder.
+    *   This demo component is a standalone page used to showcase all features of the main component.
+
+4.  **Demo Implementation**:
+    *   The demo template **MUST** display the main component in all its variations (`variants`, `sizes`, `disabled`, `invalid`, etc.).
+    *   This serves as the primary method for visual testing.
+
+5.  **Routing**:
+    *   A new lazy-loaded route **MUST** be added to `app.routes.ts` pointing to the new demo component.
+
+6.  **Cleanup**:
+    *   The central playground in `app.ts` is deprecated and **MUST NOT** be used.
+
 ### "Smart" Components / Pages (`apps/domain/.../pages`)
 
 These are container components that represent a screen.

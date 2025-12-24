@@ -1,34 +1,27 @@
 import { Component, inject } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
-import { VCardComponent } from "@libs/ui/components/v-card/v-card";
+import { RouterLink, RouterOutlet } from "@angular/router";
 import { ThemeService } from "./core/services/theme/theme.service";
 
 @Component({
   selector: "app-root",
-  imports: [RouterOutlet, VCardComponent],
+  imports: [RouterOutlet, RouterLink],
   template: `
-    <main class="grow p-8 bg-background text-foreground h-svh flex flex-col justify-center items-center">
-      <section class="w-full">
-        <div class="container mx-auto">
-          <div class="flex justify-between items-center gap-4 mb-8">
-            <h2 class="text-2xl font-bold text-center">Component Playground</h2>
-            <button
-              (click)="toggleTheme()"
-              class="bg-secondary-500 text-black hover:bg-secondary-600 cursor-pointer font-medium px-4 py-2 rounded-md hover:bg-primary/80 transition-colors"
-            >
+    <div class="bg-background text-foreground min-h-svh w-full">
+      <header class="p-4 border-b border-border">
+        <div class="container mx-auto flex justify-between items-center">
+          <h1 class="text-xl font-bold">Playground Veeti</h1>
+          <nav class="flex items-center gap-4">
+            <a routerLink="/v-input-demo" class="text-sm hover:underline">V-Input</a>
+            <button (click)="toggleTheme()" class="bg-secondary-500 hover:bg-secondary-600 text-black font-medium px-4 py-2 rounded-md hover:bg-primary/80 transition-colors">
               Toggle Theme
             </button>
-          </div>
-
-          <v-card class="min-h-100">
-            <p class="text-center text-neutral-800">Add components here for testing and development.</p>
-
-            <!-- Add here component -->
-          </v-card>
+          </nav>
         </div>
-      </section>
-      <router-outlet />
-    </main>
+      </header>
+      <main>
+        <router-outlet />
+      </main>
+    </div>
   `
 })
 export class AppRoot {

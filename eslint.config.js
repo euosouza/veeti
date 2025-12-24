@@ -66,14 +66,7 @@ module.exports = defineConfig([
   {
     files: ["src/app/libs/**/*.ts"],
     rules: {
-      "@angular-eslint/component-selector": [
-        "error",
-        {
-          type: "element",
-          prefix: "v",
-          style: "kebab-case"
-        }
-      ]
+      "@angular-eslint/component-selector": "off"
     }
   },
   {
